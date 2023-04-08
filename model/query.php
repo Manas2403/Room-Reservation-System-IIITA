@@ -174,4 +174,41 @@ function addLocation($loc)
         return true;
     return false;
 }
+function getLocationByName($location)
+{
+    $sql = "SELECT * from location where name='$location'";
+    $result = execute($sql);
+    $locationId = mysqli_fetch_array($result);
+    return $locationId;
+}
+function addRoom($room, $locationId)
+{
+    $sql = "INSERT INTO classroom(roomname,locationid) values('$room','$locationId')";
+    $result = execute($sql);
+
+    if ($result == true) {
+
+        return true;
+    } else {
+
+        return false;
+    }
+}
+function getAllRooms()
+{
+    $sql = "SELECT * from classroom";
+    $result = execute($sql);
+    $locationlist = array();
+    for ($i = 0; $row = mysqli_fetch_assoc($result); $i++) {
+        $locationlist[$i] = $row;
+    }
+    return $locationlist;
+}
+function getLocationById($id)
+{
+    $sql = "SELECT * from location where id='$id'";
+    $result = execute($sql);
+    $locationname = mysqli_fetch_array($result);
+    return $locationname;
+}
 ?>
