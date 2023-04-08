@@ -156,6 +156,30 @@ function addDepartment($dept)
         return true;
     return false;
 }
+function getAllDepartments()
+{
+    $sql = "SELECT * from department";
+    $result = execute($sql);
+    $deptlist = array();
+    for ($i = 0; $row = mysqli_fetch_assoc($result); $i++) {
+        $deptlist[$i] = $row;
+    }
+    return $deptlist;
+}
+function getDepartmentById($id)
+{
+    $sql = "SELECT * from department where id='$id'";
+    $result = execute($sql);
+    $locationname = mysqli_fetch_array($result);
+    return $locationname;
+}
+function getDeptByName($dept)
+{
+    $sql = "SELECT * from department where deptname='$dept'";
+    $result = execute($sql);
+    $locationname = mysqli_fetch_array($result);
+    return $locationname;
+}
 function getAllLocations()
 {
     $sql = "SELECT * from location";
@@ -184,6 +208,19 @@ function getLocationByName($location)
 function addRoom($room, $locationId)
 {
     $sql = "INSERT INTO classroom(roomname,locationid) values('$room','$locationId')";
+    $result = execute($sql);
+
+    if ($result == true) {
+
+        return true;
+    } else {
+
+        return false;
+    }
+}
+function addCourse($course, $deptId)
+{
+    $sql = "INSERT INTO course(coursename,deptid) values('$course','$deptId')";
     $result = execute($sql);
 
     if ($result == true) {
