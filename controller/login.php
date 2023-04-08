@@ -20,7 +20,7 @@ function login($email, $password)
         $a = ldap_search($ds, "dc=iiita,dc=ac,dc=in", "uid=$email");
         $b = ldap_get_entries($ds, $a);
         $dn = $b[0];
-        debug_to_console($dn);
+        debug_to_console($dn['mailhost']);
         // $flag = (ldap_bind($ds, $dn, $password) ? TRUE : FALSE);
         // debug_to_console($flag);
         ldap_close($ds);

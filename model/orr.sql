@@ -54,6 +54,7 @@ CREATE TABLE `booking`(
     `userid` VARCHAR(20) NOT NULL,
     `classid` INT(11) NOT NULL,
     `courseid` INT(11) NOT NULL,
+    `status` TINYINT(1),
     `date` DATE NOT NULL,
     `description` TEXT NOT NULL,
     `starttime` VARCHAR(10) NOT NULL,

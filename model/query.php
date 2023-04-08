@@ -118,4 +118,24 @@ function getUser($uid)
     $user = mysqli_fetch_array($result);
     return $user;
 }
+function getCourses()
+{
+    $sql = "SELECT * from course";
+    $result = execute($sql);
+    $courseList = array();
+    for ($i = 0; $row = mysqli_fetch_assoc($result); $i++) {
+        $courseList[$i] = $row;
+    }
+    return $courseList;
+}
+function cancelBookingStatus($bookId, $cancelledBy)
+{
+    $sql1 = "UPDATE booking SET status=0 where id='$bookId'";
+    $sql2 = "UPDATE booking SET cancelledBy='$cancelledBy' where id='$bookId'";
+    $result1 = execute($sql1);
+    $result2 = execute($sql2);
+    if ($result1 == 1 && $result2 == 1)
+        return true;
+    return false;
+}
 ?>

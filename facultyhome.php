@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="_css/main.css">
     <link rel="stylesheet" href="_css/base.css">
     <script src="_js/modernizr.js"></script>
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <link rel="icon" type="image/png" href="images/iiita.png" />
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
@@ -17,6 +17,9 @@
 <?php
 session_start();
 include("controller/fetchList.php");
+if (!isset($_SESSION['username'])) {
+    header("location:../index.php");
+}
 ?>
 
 <body id="top">
