@@ -3,12 +3,15 @@ require_once("./model/connect.php");
 @error_reporting(0);
 session_start();
 if (isset($_SESSION['username'])) {
-    if ($_SESSION['userType'] == 1) {
-        header('Location: adminhome.php');
-    } else if ($_SESSION['userType'] == 2) {
-        header('Location: facultyhome.php');
-    } else if ($_SESSION['userType'] == 3) {
-        header('Location: ');
+    echo $_SESSION['username'];
+    if (isset($_SESSION['userType'])) {
+        if ($_SESSION['userType'] == 1) {
+            header('Location: adminhome.php');
+        } else if ($_SESSION['userType'] == 2) {
+            header('Location: facultyhome.php');
+        } else if ($_SESSION['userType'] == 3) {
+            header('Location: facultybookinglog.php');
+        }
     }
 }
 ?>
@@ -19,7 +22,7 @@ if (isset($_SESSION['username'])) {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+        <link rel="icon" type="image/png" href="images/iiita.png" />
 
         <link
             rel="stylesheet"
@@ -40,7 +43,7 @@ if (isset($_SESSION['username'])) {
     </head>
     <body>
         <div class="limiter">
-            <div class="container-login100">
+            <div class="container-login100" style="align-items:center">
                 <div class="wrap-login100 p-t-30 p-b-50">
                     <span class="login100-form-title p-b-41"> <span style="color:#FAD02C">LDAP</span> Login </span>
                     <form

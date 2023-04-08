@@ -61,4 +61,61 @@ function getCourseName($courseId)
 
     return $courseName;
 }
+function getAllRoomsList()
+{
+    $sql = "SELECT * from location";
+    $result = execute($sql);
+    $locationList = array();
+    for ($i = 0; $row = mysqli_fetch_assoc($result); ++$i) {
+        $locationList = $row;
+    }
+    return $locationList;
+}
+function getAllRoom()
+{
+
+    $sql = "SELECT * FROM classroom";
+    $result = execute($sql);
+
+    $roomList = array();
+
+    for ($i = 0; $row = mysqli_fetch_assoc($result); ++$i) {
+        $roomList[$i] = $row;
+    }
+
+    return $roomList;
+}
+function getRoomType($typeId)
+{
+
+    $sql = "SELECT * FROM roomtype WHERE id ='$typeId'";
+    $result = execute($sql);
+
+    $typeName = mysqli_fetch_array($result);
+    return $typeName;
+
+}
+
+function getRoomLocation($annexId)
+{
+
+    $sql = "SELECT * FROM annex WHERE id ='$annexId'";
+    $result = execute($sql);
+
+    $locationName = mysqli_fetch_array($result);
+    return $locationName;
+}
+function addUser($uid, $fullname, $email, $userType)
+{
+    $sql = "INSERT into user VALUES ('$uid','$fullname','$email','$userType')";
+    $result = execute($sql);
+    return $result;
+}
+function getUser($uid)
+{
+    $sql = "SELECT * from user where username='$uid'";
+    $result = execute($sql);
+    $user = mysqli_fetch_array($result);
+    return $user;
+}
 ?>

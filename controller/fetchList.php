@@ -23,5 +23,29 @@ function getNameCourse($courseId)
 
     return $courseName;
 }
+function getAllRooms()
+{
+    $locationList = getAllRoomsList();
+    return $locationList;
+}
+function getAllRoomList()
+{
 
+    $roomList = getAllRoom();
+
+    return $roomList;
+}
+function roomType($typeId)
+{
+
+    $type = getRoomType($typeId);
+    return $type;
+}
+
+function roomLocation($annexId)
+{
+
+    $location = getRoomLocation($annexId);
+    return $location;
+}
 ?>
