@@ -66,6 +66,13 @@ if (!isset($_SESSION['username'])) {
 
         <ul class="header__nav">
             <li ><a href="facultyhome.php" title="" style="text-decoration:none">Home</a></li>
+            <li class="has-children">
+                <a href="#0" title="" style="text-decoration:none">Bookings</a>
+                <ul class="sub-menu">
+                    <li><a href="facultynewbookings.php" style="text-decoration:none">New Booking</a></li>
+                    <li><a href="facultyCancelBookings.php"style="text-decoration:none">Cancel Booking</a></li>
+                </ul>
+            </li>
             <li class="current"><a href="facultybookinglog.php" title="" style="text-decoration:none">Booking Log</a></li>
             <li><a href="controller/logout.php" title="" style="text-decoration:none">Log Out</a></li>
         </ul>
@@ -105,43 +112,43 @@ if (!isset($_SESSION['username'])) {
         echo "<div class=\"table-responsive booking-log\">";
         echo "<table class=\"table align-middle\">";
         ?>
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th >Date</th>
-                                                                                <th >Time</th>
-                                                                                <th >Room</th>
-                                                                                <th>Course Name</th>
-                                                                                <th >Booked By</th>
-                                                                                <th>Status</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <?php
-                                                                            $bookList = getAllBookingDetailsPagination($offset, $no_of_records_per_page);
-                                                                            foreach ($bookList as $b) {
-                                                                                $roomName = getClassRoomNum($b['classid']);
-                                                                                $courseName = getNameCourse($b['courseid']);
-                                                                                $user = $b['userid'];
-                                                                                ?>
-                                                                                                                                                    <tr>
-                                                                                                                                                        <td><?php echo $b['date']; ?></td>
-                                                                                                                                                        <td><?php echo $b['starttime'] . " - " . $b['endtime']; ?></td>
-                                                                                                                                                        <td><?php echo $roomName['roomname']; ?></td>
-                                                                                                                                                        <td><?php echo $courseName['coursename']; ?></td>
-                                                                                                                                                        <td><?php echo $user; ?></td>
-                                                                                                                                                        <td>
-                                                                                                                                                            <?php if ($b['status'] == 1) {
-                                                                                                                                                                echo "<h6 style='color:darkgreen'>" . "Confirmed." . "</h6>";
-                                                                                                                                                            } else {
-                                                                                                                                                                echo "<h6 style='color:#ff1627'>" . "Cancelled." . "</h6>"; ?>
-                                                                                                                                                                                                                            </td>
-                                                                                                                                                                                                                            <td><?php } ?></td>
-                                                                                                                                                    </tr>
+                                                                                <thead>
+                                                                                <tr>
+                                                                                    <th >Date</th>
+                                                                                    <th >Time</th>
+                                                                                    <th >Room</th>
+                                                                                    <th>Course Name</th>
+                                                                                    <th >Booked By</th>
+                                                                                    <th>Status</th>
+                                                                                </tr>
+                                                                                </thead>
+                                                                                <?php
+                                                                                $bookList = getAllBookingDetailsPagination($offset, $no_of_records_per_page);
+                                                                                foreach ($bookList as $b) {
+                                                                                    $roomName = getClassRoomNum($b['classid']);
+                                                                                    $courseName = getNameCourse($b['courseid']);
+                                                                                    $user = $b['userid'];
+                                                                                    ?>
+                                                                                                                                                            <tr>
+                                                                                                                                                                <td><?php echo $b['date']; ?></td>
+                                                                                                                                                                <td><?php echo $b['starttime'] . " - " . $b['endtime']; ?></td>
+                                                                                                                                                                <td><?php echo $roomName['roomname']; ?></td>
+                                                                                                                                                                <td><?php echo $courseName['coursename']; ?></td>
+                                                                                                                                                                <td><?php echo $user; ?></td>
+                                                                                                                                                                <td>
+                                                                                                                                                                    <?php if ($b['status'] == 1) {
+                                                                                                                                                                        echo "<h6 style='color:darkgreen'>" . "Confirmed." . "</h6>";
+                                                                                                                                                                    } else {
+                                                                                                                                                                        echo "<h6 style='color:#ff1627'>" . "Cancelled." . "</h6>"; ?>
+                                                                                                                                                                                                                                        </td>
+                                                                                                                                                                                                                                        <td><?php } ?></td>
+                                                                                                                                                            </tr>
 
-                                                                                                                                                    <?php
-                                                                            }
+                                                                                                                                                            <?php
+                                                                                }
 
-                                                                            echo "</table>";
-                                                                            echo "</div>";
+                                                                                echo "</table>";
+                                                                                echo "</div>";
     } else {
         echo "Nothing found in db";
     }

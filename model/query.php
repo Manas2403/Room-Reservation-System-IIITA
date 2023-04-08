@@ -138,4 +138,22 @@ function cancelBookingStatus($bookId, $cancelledBy)
         return true;
     return false;
 }
+function getDeptName()
+{
+    $sql = "SELECT * from department";
+    $result = execute($sql);
+    $deptlist = array();
+    for ($i = 0; $row = mysqli_fetch_assoc($result); $i++) {
+        $deptlist[$i] = $row;
+    }
+    return $deptlist;
+}
+function addDepartment($dept)
+{
+    $sql = "INSERT into department(deptname) values ('$dept')";
+    $result = execute($sql);
+    if ($result)
+        return true;
+    return false;
+}
 ?>

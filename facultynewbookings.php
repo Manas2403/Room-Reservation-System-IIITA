@@ -45,6 +45,13 @@ if (!isset($_SESSION['username'])) {
 
         <ul class="header__nav">
             <li ><a href="facultyhome.php" title="">Home</a></li>
+            <li class="has-children">
+                <a href="#0" title="" style="text-decoration:none">Bookings</a>
+                <ul class="sub-menu">
+                    <li><a href="facultynewbookings.php" style="text-decoration:none">New Booking</a></li>
+                    <li><a href="facultyCancelBookings.php"style="text-decoration:none">Cancel Booking</a></li>
+                </ul>
+            </li>
             <li><a href="facultybookinglog.php" title="">Booking Log</a></li>
             <li><a href="controller/logout.php" title="">Log Out</a></li>
         </ul>
@@ -93,7 +100,7 @@ if (!isset($_SESSION['username'])) {
                             <?php
                             $course = getCourses();
                             foreach ($course as $c) { ?>
-                                                                                                        <option value="<?php echo $c['coursename']; ?>"><?php echo $c['coursename']; ?></option>
+                                                                                                            <option value="<?php echo $c['coursename']; ?>"><?php echo $c['coursename']; ?></option>
                             <?php } ?>
                         </select>
                         <span class="stopp" id="courseSpan"></span>
