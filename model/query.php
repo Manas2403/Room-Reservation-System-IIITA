@@ -156,4 +156,22 @@ function addDepartment($dept)
         return true;
     return false;
 }
+function getAllLocations()
+{
+    $sql = "SELECT * from location";
+    $result = execute($sql);
+    $locationlist = array();
+    for ($i = 0; $row = mysqli_fetch_assoc($result); $i++) {
+        $locationlist[$i] = $row;
+    }
+    return $locationlist;
+}
+function addLocation($loc)
+{
+    $sql = "INSERT into location(name) values ('$loc')";
+    $result = execute($sql);
+    if ($result)
+        return true;
+    return false;
+}
 ?>
