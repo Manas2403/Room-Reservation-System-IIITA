@@ -23,11 +23,7 @@ function getNameCourse($courseId)
 
     return $courseName;
 }
-function getAllRooms()
-{
-    $locationList = getAllRoomsList();
-    return $locationList;
-}
+
 function getAllRoomList()
 {
 

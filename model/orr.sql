@@ -31,23 +31,20 @@ CREATE TABLE `course`(
     `deptid` INT(11) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 -- inserting data into course table
-
 -- Department details
 CREATE TABLE `department`(
     `id` INT(11) NOT NULL,
     `deptname` VARCHAR(20) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 -- inserting data into department table
-
 -- User details
 CREATE TABLE `user`(
     `username` VARCHAR(20) NOT NULL,
     `fullname` VARCHAR(100) NOT NULL,
     `email` VARCHAR(30) NOT NULL,
-    `type` INT(11) NOT NULL DEFAULT '2',
+    `type` INT(11) NOT NULL DEFAULT '2'
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 -- inserting data into user table
-
 -- Booking details
 CREATE TABLE `booking`(
     `id` INT(11) NOT NULL,
@@ -60,10 +57,9 @@ CREATE TABLE `booking`(
     `starttime` VARCHAR(10) NOT NULL,
     `endtime` VARCHAR(10) NOT NULL,
     `cancelledby` VARCHAR(30) DEFAULT NULL,
-    `addedby` VARCHAR(30) NOT NULL,
+    `addedby` VARCHAR(30) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 -- inserting data into booking table
-
 -- primary key for location table
 ALTER TABLE
     `location` ADD PRIMARY KEY(`id`);
@@ -117,8 +113,7 @@ ALTER TABLE
     ADD CONSTRAINT `FK_Booking_3` FOREIGN KEY(`classid`) REFERENCES `classroom`(`id`);
     -- foreign key constraints for classroom table
 ALTER TABLE
-    `classroom` 
-    ADD CONSTRAINT `FK_Classroom_2` FOREIGN KEY(`locationid`) REFERENCES `location`(`id`);
+    `classroom` ADD CONSTRAINT `FK_Classroom_2` FOREIGN KEY(`locationid`) REFERENCES `location`(`id`);
     -- foreign key constraints for course table
 ALTER TABLE
     `course` ADD CONSTRAINT `FK_Course_1` FOREIGN KEY(`deptid`) REFERENCES `department`(`id`);
