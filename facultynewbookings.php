@@ -16,18 +16,11 @@
 
     <?php
     include('model/query.php');
+    session_start();
     ?>
 </head>
 
 <body id="top">
-<?php
-session_start();
-if (!isset($_SESSION['username'])) {
-    header("location:index.php");
-}
-
-?>
-
 <header class="s-header header">
 
     <div class="header__logo">
@@ -52,7 +45,7 @@ if (!isset($_SESSION['username'])) {
                     <li><a href="facultyCancelBookings.php"style="text-decoration:none">Cancel Booking</a></li>
                 </ul>
             </li>
-            <li><a href="facultybookinglog.php" title="">Booking Log</a></li>
+            <li><a href="bookinglog.php" title="">Booking Log</a></li>
             <li><a href="controller/logout.php" title="">Log Out</a></li>
         </ul>
 
@@ -77,9 +70,17 @@ if (!isset($_SESSION['username'])) {
                                $user = getUser($_SESSION['username']);
                                echo $user['fullname'] ?>" readonly>
                     </div>
-                    <div >
+                    <div style="display:flex;align-items:center;gap:1rem">
                         <input class="input102" type="date" name="date" id="selectDate">
                         <span class="stopp" id="dateSpan"></span>
+                        <select id="location" name="location" class="input102">
+                         <option value="location">Location</option>
+                         <?php
+                         $locations = getAllLocations();
+                         foreach ($locations as $l) {
+                             ?><option value="<?php echo $l['name'] ?>"><?php echo $l['name'] ?></option>
+                         <?php } ?>
+                        </select>
                     </div>
                     <!-- <div>
                         <select id="classType" class="input102" name="classType" onchange="showTime(this)">
@@ -100,10 +101,13 @@ if (!isset($_SESSION['username'])) {
                             <?php
                             $course = getCourses();
                             foreach ($course as $c) { ?>
-                                                                                                            <option value="<?php echo $c['coursename']; ?>"><?php echo $c['coursename']; ?></option>
+                                                                                                                                                                    <option value="<?php echo $c['coursename']; ?>"><?php echo $c['coursename']; ?></option>
                             <?php } ?>
                         </select>
                         <span class="stopp" id="courseSpan"></span>
+                    </div>
+                    <div>
+                        <textarea class="input102" style="background-color:#f5f3f3;margin-top:1rem" name="description" id="description" placeholder="Enter Description" ></textarea>
                     </div>
                 <div class="container-login100-form-btn m-t-32" >
                     <button class="login100-form-btn" type="submit" value="submit">
@@ -123,5 +127,4 @@ if (!isset($_SESSION['username'])) {
 <script src="_js/main.js"></script>
 
 </body>
-
 </html>

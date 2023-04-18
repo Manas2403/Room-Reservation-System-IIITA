@@ -10,7 +10,7 @@ if (isset($_SESSION['username'])) {
         } else if ($_SESSION['userType'] == 2) {
             header('Location: facultyhome.php');
         } else if ($_SESSION['userType'] == 3) {
-            header('Location: facultybookinglog.php');
+            header('Location: bookinglog.php');
         }
     }
 }

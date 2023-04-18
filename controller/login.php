@@ -11,18 +11,17 @@ function debug_to_console($data)
 function login($email, $password)
 {
     if ($email && $password) {
-        $server = "ldap://172.31.1.41";
-        $dn = "dc=iiita,dc=ac,dc=in";
-        $port = "389";
-        error_reporting(0);
-        $ds = ldap_connect($server, $port);
+        $ds = ldap_connect("172.31.1.41");
         ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
         $a = ldap_search($ds, "dc=iiita,dc=ac,dc=in", "uid=$email");
         $b = ldap_get_entries($ds, $a);
         $dn = $b[0];
         debug_to_console($dn['mailhost']);
-        // $flag = (ldap_bind($ds, $dn, $password) ? TRUE : FALSE);
-        // debug_to_console($flag);
+        $ldapbind = @ldap_bind($ds, $dn["dn"], $password);
+        if (!$ldapbind) {
+            debug_to_console("Wrong password");
+            return false;
+        }
         ldap_close($ds);
         $uid = $dn['uid'][0];
         $fullname = $dn['gecos'][0];
@@ -31,7 +30,7 @@ function login($email, $password)
             if ($dn['businesscategory'][1] == 'faculty') {
                 $userType = 2;
             } else {
-                $userType = 2;
+                $userType = 1;
             }
             $res = addUser($uid, $fullname, $mail, $userType);
             $_SESSION['username'] = $uid;
@@ -60,7 +59,7 @@ if (login($email, $password)) {
         } else if ($_SESSION['userType'] == 2) {
             header('Location: ../facultyhome.php');
         } else if ($_SESSION['userType'] == 3) {
-            header('Location: ../facultybookinglog.php');
+            header('Location: ../bookinglog.php');
         }
     }
 }

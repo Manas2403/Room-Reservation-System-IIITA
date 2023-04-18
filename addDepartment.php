@@ -17,17 +17,11 @@
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script type="text/javascript" src="js/validateDept.js"></script>
-    <?php include("model/query.php"); ?>
+    <?php include("model/query.php");
+    session_start(); ?>
 </head>
 
 <body id="top">
-<?php
-session_start();
-if (!isset($_SESSION['username'])) {
-    header("location:index.php");
-}
-
-?>
 <header class="s-header header">
 
     <div class="header__logo">
@@ -55,7 +49,7 @@ if (!isset($_SESSION['username'])) {
             </li>
 
 
-            <li><a href="adminbookinglog.php" title="">Booking Log</a></li>
+            <li><a href="bookinglog.php" title="">Booking Log</a></li>
             <li class="has-children">
                 <a href="#0" title="">Adding</a>
                 <ul class="sub-menu">
@@ -108,10 +102,10 @@ if (!isset($_SESSION['username'])) {
                     foreach ($deptList as $b) {
                         if ($b['deptname'] != "admin") {
                             ?>
-                                                                                                                                                                                            <tr>
-                                                                                                                                                                                                <td><?php echo $b['deptname']; ?></td>
-                                                                                                                                                                                            </tr>
-                                                                                                        <?php }
+                                                                                                                                                                                                                            <tr>
+                                                                                                                                                                                                                                <td><?php echo $b['deptname']; ?></td>
+                                                                                                                                                                                                                            </tr>
+                                                                                                                        <?php }
                     } ?>
                 </table>
             </div>
