@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Room Reservation System IIITA</title>
@@ -12,11 +13,12 @@
     <link rel="icon" type="image/png" href="images/iiita.png" />
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-<?php
-include("controller/fetchList.php");
-session_start();
-?>
+    <?php
+    include("controller/fetchList.php");
+    session_start();
+    ?>
 </head>
+
 <body id="top">
     <header class="s-header header">
 
@@ -36,12 +38,12 @@ session_start();
             <ul class="header__nav">
                 <li class="current"><a href="facultyhome.php" title="">Home</a></li>
                 <li class="has-children">
-                <a href="#0" title="" style="text-decoration:none">Bookings</a>
-                <ul class="sub-menu">
-                    <li><a href="facultynewbookings.php" style="text-decoration:none">New Booking</a></li>
-                    <li><a href="facultyCancelBookings.php"style="text-decoration:none">Cancel Booking</a></li>
-                </ul>
-            </li>
+                    <a href="#0" title="" style="text-decoration:none">Bookings</a>
+                    <ul class="sub-menu">
+                        <li><a href="facultynewbookings.php" style="text-decoration:none">New Booking</a></li>
+                        <li><a href="facultyCancelBookings.php" style="text-decoration:none">Cancel Booking</a></li>
+                    </ul>
+                </li>
                 <li><a href="bookinglog.php" title="">Booking Log</a></li>
                 <li><a href="controller/logout.php" title="">Log Out</a></li>
             </ul>

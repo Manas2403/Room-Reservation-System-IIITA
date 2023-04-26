@@ -11,6 +11,10 @@ function debug_to_console($data)
 function addDeptName($dept)
 {
     if ($dept) {
+        if (deptExists($dept)) {
+            header('Location: ../addDepartment.php');
+            return false;
+        }
         $result = addDepartment($dept);
         if ($result) {
             return true;

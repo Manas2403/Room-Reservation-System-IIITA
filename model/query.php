@@ -20,6 +20,46 @@ function userExists($email)
     else
         return false;
 }
+function roomExists($room, $locationId)
+{
+    $sql = "SELECT * from classroom where roomname='$room' and locationid='$locationId'";
+    $result = execute($sql);
+    $count = mysqli_num_rows($result);
+    if ($count)
+        return true;
+    else
+        return false;
+}
+function locExists($loc)
+{
+    $sql = "SELECT * from location where name='$loc'";
+    $result = execute($sql);
+    $count = mysqli_num_rows($result);
+    if ($count)
+        return true;
+    else
+        return false;
+}
+function deptExists($dept)
+{
+    $sql = "SELECT * from department where name='$dept'";
+    $result = execute($sql);
+    $count = mysqli_num_rows($result);
+    if ($count)
+        return true;
+    else
+        return false;
+}
+function courseExists($course, $deptId)
+{
+    $sql = "SELECT * from course where coursename='$course' and deptid='$deptId'";
+    $result = execute($sql);
+    $count = mysqli_num_rows($result);
+    if ($count)
+        return true;
+    else
+        return false;
+}
 function getClassRoomName($classId)
 {
     $sql = "SELECT roomname from classroom where id='$classId'";
@@ -262,4 +302,51 @@ function getLocationById($id)
     $locationname = mysqli_fetch_array($result);
     return $locationname;
 }
+function deleteClassroom($id)
+{
+    $sql = "DELETE from classroom where id='$id'";
+    $result = execute($sql);
+    if ($result == 1)
+        return true;
+    return false;
+}
+function deleteLocation($id)
+{
+    $sql = "DELETE from location where id='$id'";
+    $result = execute($sql);
+    if ($result == 1)
+        return true;
+    return false;
+}
+function deleteCourse($id)
+{
+    $sql = "DELETE from course where id='$id'";
+    $result = execute($sql);
+    if ($result == 1)
+        return true;
+    return false;
+}
+function deleteDept($id)
+{
+    $sql = "DELETE from department where id='$id'";
+    $result = execute($sql);
+    if ($result == 1)
+        return true;
+    return false;
+}
+function getAvailableRooms()
+{
+
+}
+function getFacultyCanCancelBooking($username)
+{
+    $sql = "SELECT * from booking where userid='$username' and status=1";
+    $result = execute($sql);
+    $booklist = array();
+    for ($i = 0; $row = mysqli_fetch_assoc($result); $i++) {
+        $booklist[$i] = $row;
+    }
+    return $booklist;
+}
+
 ?>

@@ -11,6 +11,10 @@ function debug_to_console($data)
 function addLocName($loc)
 {
     if ($loc) {
+        if (locExists($loc)) {
+            header('Location: ../addLocation.php');
+            return false;
+        }
         $result = addLocation($loc);
         if ($result) {
             return true;

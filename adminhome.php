@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Room Reservation System IIITA</title>
@@ -12,11 +13,12 @@
     <link rel="icon" type="image/png" href="images/iiita.png" />
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-<?php
+    <?php
 include("controller/fetchList.php");
 session_start();
 ?>
 </head>
+
 <body id="top">
     <header class="s-header header">
 
@@ -31,35 +33,35 @@ session_start();
         <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
         <nav class="header__nav-wrap">
 
-        <h2 class="header__nav-heading h6">Navigate to</h2>
+            <h2 class="header__nav-heading h6">Navigate to</h2>
 
-        <ul class="header__nav">
-            <li ><a href="adminhome.php" title="">Home</a></li>
+            <ul class="header__nav">
+                <li><a href="adminhome.php" title="">Home</a></li>
 
-                       <li class="has-children">
-                <a href="#0" title="">Booking</a>
-                <ul class="sub-menu">
-           <li><a href="adminnewbookings.php">Create Booking</a></li>
-            <li><a href="adminCancelBookings.php">Cancel Booking</a></li>
-                </ul>
-            </li>
+                <li class="has-children">
+                    <a href="#0" title="">Booking</a>
+                    <ul class="sub-menu">
+                        <li><a href="adminnewbookings.php">Create Booking</a></li>
+                        <li><a href="adminCancelBookings.php">Cancel Booking</a></li>
+                    </ul>
+                </li>
 
 
-            <li><a href="bookinglog.php" title="">Booking Log</a></li>
-            <li class="has-children">
-                <a href="#0" title="">Adding</a>
-                <ul class="sub-menu">
-                    <li><a href="addDepartment.php"">Department</a></li>
-                    <li><a href="addCourse.php">Course</a></li>
-                    <li><a href="addRoom.php">Room</a></li>
-                    <li><a href="addLocation.php">Location</a></li>
-                </ul>
-            </li>
-            <li><a href="controller/logout.php" title="">Log Out</a></li>
-        </ul>
+                <li><a href="bookinglog.php" title="">Booking Log</a></li>
+                <li class="has-children">
+                    <a href="#0" title="">Adding</a>
+                    <ul class="sub-menu">
+                        <li><a href="addDepartment.php"">Department</a></li>
+                    <li><a href=" addCourse.php">Course</a></li>
+                        <li><a href="addRoom.php">Room</a></li>
+                        <li><a href="addLocation.php">Location</a></li>
+                    </ul>
+                </li>
+                <li><a href="controller/logout.php" title="">Log Out</a></li>
+            </ul>
 
-        <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
-    </nav>
+            <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+        </nav>
 
     </header>
 

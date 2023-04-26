@@ -54,8 +54,8 @@ CREATE TABLE `booking`(
     `status` TINYINT(1),
     `date` DATE NOT NULL,
     `description` TEXT NOT NULL,
-    `starttime` VARCHAR(10) NOT NULL,
-    `endtime` VARCHAR(10) NOT NULL,
+    `starttime` TIME NOT NULL,
+    `endtime`  TIME NOT NULL,
     `cancelledby` VARCHAR(30) DEFAULT NULL,
     `addedby` VARCHAR(30) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
@@ -108,15 +108,15 @@ ALTER TABLE
     -- auto increment for roomtype table
     -- foreign key constraints for booking table
 ALTER TABLE
-    `booking` ADD CONSTRAINT `FK_Booking_1` FOREIGN KEY(`courseid`) REFERENCES `course`(`id`),
-    ADD CONSTRAINT `FK_Booking_2` FOREIGN KEY(`userid`) REFERENCES `user`(`username`),
-    ADD CONSTRAINT `FK_Booking_3` FOREIGN KEY(`classid`) REFERENCES `classroom`(`id`);
+    `booking` ADD CONSTRAINT `FK_Booking_1` FOREIGN KEY(`courseid`) REFERENCES `course`(`id`) ON DELETE CASCADE,
+    ADD CONSTRAINT `FK_Booking_2` FOREIGN KEY(`userid`) REFERENCES `user`(`username`) ON DELETE CASCADE,
+    ADD CONSTRAINT `FK_Booking_3` FOREIGN KEY(`classid`) REFERENCES `classroom`(`id`) ON DELETE CASCADE;
     -- foreign key constraints for classroom table
 ALTER TABLE
-    `classroom` ADD CONSTRAINT `FK_Classroom_2` FOREIGN KEY(`locationid`) REFERENCES `location`(`id`);
+    `classroom` ADD CONSTRAINT `FK_Classroom_2` FOREIGN KEY(`locationid`) REFERENCES `location`(`id`) ON DELETE CASCADE;
     -- foreign key constraints for course table
 ALTER TABLE
-    `course` ADD CONSTRAINT `FK_Course_1` FOREIGN KEY(`deptid`) REFERENCES `department`(`id`);
+    `course` ADD CONSTRAINT `FK_Course_1` FOREIGN KEY(`deptid`) REFERENCES `department`(`id`) ON DELETE CASCADE;
     -- foreign key constraints for user table
 COMMIT
     ;

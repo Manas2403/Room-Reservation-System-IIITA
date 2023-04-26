@@ -11,6 +11,10 @@ function debug_to_console($data)
 function addRoomName($room, $locationId)
 {
     if ($room && $locationId) {
+        if (roomExists($room, $locationId)) {
+            header('Location: ../addRoom.php');
+            return false;
+        }
         $result = addRoom($room, $locationId);
         if ($result) {
             return true;

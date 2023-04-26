@@ -11,6 +11,10 @@ function debug_to_console($data)
 function addCourseName($course, $deptId)
 {
     if ($course && $deptId) {
+        if (courseExists($course, $deptId)) {
+            header('Location: ../addCourse.php');
+            return false;
+        }
         $result = addCourse($course, $deptId);
         if ($result) {
             return true;
