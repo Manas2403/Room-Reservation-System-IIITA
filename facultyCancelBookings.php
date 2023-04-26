@@ -77,11 +77,11 @@
                 <?php
                 $bookList = getFacultyCanCancelBooking($_SESSION['username']);
                 date_default_timezone_set('Asia/Dhaka');
-                $day = date("d-m-Y");
+                $day = date("Y-m-d");
                 foreach ($bookList as $b) {
                     if ($b['date'] >= $day && $b['status'] == 1) {
-                        $roomName = getClassRoomNum($b['classid']);
-                        $courseName = getNameCourse($b['courseid']); ?>
+                        $roomName = getClassRoomName($b['classid']);
+                        $courseName = getCourseName($b['courseid']); ?>
                 <tr style="margin:3rem">
                     <td><?php echo $b['date']; ?></td>
                     <td><?php echo $b['starttime'] . "-" . $b['endtime']; ?></td>
