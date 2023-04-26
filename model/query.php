@@ -42,7 +42,7 @@ function locExists($loc)
 }
 function deptExists($dept)
 {
-    $sql = "SELECT * from department where name='$dept'";
+    $sql = "SELECT * from department where deptname='$dept'";
     $result = execute($sql);
     $count = mysqli_num_rows($result);
     if ($count)
@@ -334,10 +334,6 @@ function deleteDept($id)
         return true;
     return false;
 }
-function getAvailableRooms()
-{
-
-}
 function getFacultyCanCancelBooking($username)
 {
     $sql = "SELECT * from booking where userid='$username' and status=1";
@@ -348,5 +344,34 @@ function getFacultyCanCancelBooking($username)
     }
     return $booklist;
 }
+function listOfAvailableRooms($locId, $date, $startTime, $endTime)
+{
+    $sql = "SELECT roomname FROM classroom WHERE locationid='$locId' and roomname not in (SELECT roomname from classroom c join booking b on c.id=b.classid and c.locationid='$locId' and ((b.starttime>='$startTime' and b.starttime<'$endTime') or (b.endtime>'$startTime' and b.endtime<='$endTime')) and b.date='$date')";
+    $result = execute($sql);
+    $roomlist = array();
+    for ($i = 0; $row = mysqli_fetch_assoc($result); $i++) {
+        $roomlist[$i] = $row;
+    }
+    return $roomlist;
+}
+function getRoomByName($room)
+{
+    $sql = "SELECT * from classroom where roomname='$room'";
+    $result = execute($sql);
+    $roomId = mysqli_fetch_array($result);
+    return $roomId;
+}
+function addNewBooking($id, $loc, $date, $startTime, $endTime, $roomId, $course, $desc)
+{
+    $sql = "INSERT INTO booking(userid,classid,courseid,status,date,description,starttime,endtime) values('$id','$roomId','$course',1,'$date','$desc','$startTime','$endTime')";
+    $result = execute($sql);
 
+    if ($result == true) {
+
+        return true;
+    } else {
+
+        return false;
+    }
+}
 ?>

@@ -13,7 +13,6 @@
     <link rel="icon" type="image/png" href="images/iiita.png" />
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script type="text/javascript" src="js/selectBookingInfo.js"></script>
 
     <?php
     include('model/query.php');
@@ -67,38 +66,37 @@
                     <form class="login100-form validate-form p-b-33 p-t-5" action="controller/addBooking.php"
                         method="post">
                         <div>
-                            <input class="input100" type="text" name="id" value="<?php
+                            <input class="input100" type="text" name="id" id="id" value="<?php
                             $user = getUser($_SESSION['username']);
-                            echo $user['fullname'] ?>" readonly>
+                            echo $user['username'] ?>" readonly>
                         </div>
-                        <div style="display:flex;align-items:center;gap:1rem">
-                            <input class="input102" type="date" name="date" id="selectDate">
-                            <span class="stopp" id="dateSpan"></span>
-                            <select id="location" name="location" class="input102">
-                                <option value="location">Location</option>
-                                <?php
-                                $locations = getAllLocations();
-                                foreach ($locations as $l) {
-                                    ?><option value="<?php echo $l['name'] ?>"><?php echo $l['name'] ?></option>
-                                <?php } ?>
-                            </select>
+
+
+                        <span class="stopp" id="dateSpan"></span>
+                        <select id="location" name="location" class="input102">
+                            <option value="location">Location</option>
+                            <?php
+                            $locations = getAllLocations();
+                            foreach ($locations as $l) {
+                                ?><option value="<?php echo $l['id'] ?>"><?php echo $l['name'] ?></option>
+                            <?php } ?>
+                        </select>
+                        <input class="input102" type="date" name="selectDate" id="selectDate">
+                        <div style="display:flex;justify-content:space-between;align-items:center">
+                            <div class="input104">
+                                <p style="font-size: 18px" class="input_heading">Start Time</p>
+                                <select id="fromT" name="fromT" class="dropList"></select>
+                                <span class="stopp" id="timeSpan"></span>
+                            </div>
+                            <div class="input104">
+                                <p style="font-size: 18px" class="input_heading">EndTime</p>
+                                <select id="toT" name="toT" class="dropList"></select>
+                                <span class="stopp" id="timeSpan"></span>
+                            </div>
                         </div>
-                        <div class="input104">
-                            <p style="font-size: 18px">Start Time</p>
-                            <select id="fromT" name="fromT" class="dropList"></select>
-                            <span class="stopp" id="timeSpan"></span>
-                        </div>
-                        <div class="input104">
-                            <p style="font-size: 18px">EndTime</p>
-                            <select id="toT" name="toT" class="dropList"></select>
-                            <span class="stopp" id="timeSpan"></span>
-                        </div>
-                        <p style="font-size: 18px">Available Rooms</p>
+                        <p style="font-size: 18px" class="input_heading">Available Rooms</p>
                         <div>
                             <select id="room" name="room" class="input102">
-                                <?php
-
-                                ?>
                             </select>
                         </div>
                         <div>
@@ -108,7 +106,7 @@
                                 <?php
                                 $course = getCourses();
                                 foreach ($course as $c) { ?>
-                                <option value="<?php echo $c['coursename']; ?>"><?php echo $c['coursename']; ?></option>
+                                <option value="<?php echo $c['id']; ?>"><?php echo $c['coursename']; ?></option>
                                 <?php } ?>
                             </select>
                             <span class="stopp" id="courseSpan"></span>
@@ -118,7 +116,7 @@
                                 name="description" id="description" placeholder="Enter Description"></textarea>
                         </div>
                         <div class="container-login100-form-btn m-t-32">
-                            <button class="login100-form-btn" type="submit" value="submit">
+                            <button class="login100-form-btn" type="submit" value="submit" id="submit_btn">
                                 CONFIRM
                             </button>
                             <br><br>
