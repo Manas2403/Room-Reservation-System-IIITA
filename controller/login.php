@@ -16,7 +16,7 @@ function login($email, $password)
         $a = ldap_search($ds, "dc=iiita,dc=ac,dc=in", "uid=$email");
         $b = ldap_get_entries($ds, $a);
         $dn = $b[0];
-        debug_to_console($dn['mailhost']);
+        debug_to_console($dn['mobile'][0]);
         $ldapbind = @ldap_bind($ds, $dn["dn"], $password);
         if (!$ldapbind) {
             debug_to_console("Wrong password");
@@ -26,6 +26,7 @@ function login($email, $password)
         $uid = $dn['uid'][0];
         $fullname = $dn['gecos'][0];
         $mail = $dn['mail'][0];
+        $_SESSION['mobile'] = $dn['mobile'][0];
         if (!userExists($email)) {
             if ($dn['businesscategory'][1] == 'faculty') {
                 $userType = 2;
