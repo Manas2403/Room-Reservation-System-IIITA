@@ -14,11 +14,11 @@
     <link rel="icon" type="image/png" href="images/iiita.png" />
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+    </script> -->
     <?php
     include('model/query.php');
     session_start(); ?>
@@ -41,16 +41,24 @@
             <h2 class="header__nav-heading h6">Navigate to</h2>
 
             <ul class="header__nav">
-                <li><a href="facultyhome.php" title="" style="text-decoration:none">Home</a></li>
+                <li><a href="facultyhome.php" title="">Home</a></li>
                 <li class="has-children">
-                    <a href="#0" title="" style="text-decoration:none">Bookings</a>
+                    <a href="#0" title="" style="text-decoration:none">Booking</a>
                     <ul class="sub-menu">
                         <li><a href="facultynewbookings.php" style="text-decoration:none">New Booking</a></li>
-                        <li><a href="facultyCancelBookings.php" style="text-decoration:none">Cancel Booking</a></li>
+                        <li><a href="facultyCancelBookings.php" style="text-decoration:none">Cancel
+                                Booking</a></li>
                     </ul>
                 </li>
-                <li><a href="bookinglog.php" title="" style="text-decoration:none">Booking Log</a></li>
-                <li><a href="controller/logout.php" title="" style="text-decoration:none">Log Out</a></li>
+                <li><a href="bookinglog.php" title="">Booking Log</a></li>
+                <li class="has-children" style="vertical-align:middle">
+                    <a href="#0" title="" style="text-decoration:none"><img src="./images/person-circle.svg"
+                            width="32" /></a>
+                    <ul class="sub-menu">
+                        <li><a href="profile.php" style="text-decoration:none">Profile</a></li>
+                        <li><a href="controller/logout.php" style="text-decoration:none">Logout</a></li>
+                    </ul>
+                </li>
             </ul>
 
             <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
@@ -82,7 +90,7 @@
                     if ($b['date'] >= $day && $b['status'] == 1) {
                         $roomName = getClassRoomName($b['classid']);
                         $courseName = getCourseName($b['courseid']); ?>
-                <tr style="margin:3rem">
+                <tr style="margin:3rem;font-size:1.8rem">
                     <td><?php echo $b['date']; ?></td>
                     <td><?php echo $b['starttime'] . "-" . $b['endtime']; ?></td>
                     <td><?php echo $courseName['coursename']; ?></td>

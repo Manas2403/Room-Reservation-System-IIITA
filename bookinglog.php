@@ -3,27 +3,6 @@
 
 <head>
     <script>
-    function showResult(str) {
-        if (str.length == 0) {
-            document.getElementById("livesearch").innerHTML = "";
-            document.getElementById("livesearch").style.border = "0px";
-            return;
-        }
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else { // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("livesearch").innerHTML = this.responseText;
-                document.getElementById("livesearch").style.border = "1px solid #A5ACB2";
-            }
-        }
-        xmlhttp.open("GET", "livesearch.php?q=" + str, true);
-        xmlhttp.send();
-    }
     </script>
     <meta charset="utf-8">
     <title>Room Reservation System IIITA</title>
@@ -65,14 +44,21 @@
             <ul class="header__nav">
                 <li><a href="facultyhome.php" title="" style="text-decoration:none">Home</a></li>
                 <li class="has-children">
-                    <a href="#0" title="" style="text-decoration:none">Bookings</a>
+                    <a href="#0" title="" style="text-decoration:none">Booking</a>
                     <ul class="sub-menu">
                         <li><a href="facultynewbookings.php" style="text-decoration:none">New Booking</a></li>
                         <li><a href="facultyCancelBookings.php" style="text-decoration:none">Cancel Booking</a></li>
                     </ul>
                 </li>
                 <li class="current"><a href="bookinglog.php" title="" style="text-decoration:none">Booking Log</a></li>
-                <li><a href="controller/logout.php" title="" style="text-decoration:none">Log Out</a></li>
+                <li class="has-children" style="vertical-align:middle">
+                    <a href="#0" title="" style="text-decoration:none"><img src="./images/person-circle.svg"
+                            width="32" /></a>
+                    <ul class="sub-menu">
+                        <li><a href="profile.php" style="text-decoration:none">Profile</a></li>
+                        <li><a href="controller/logout.php" style="text-decoration:none">Logout</a></li>
+                    </ul>
+                </li>
             </ul>
 
             <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
@@ -127,18 +113,18 @@
                 $courseName = getNameCourse($b['courseid']);
                 $user = $b['userid'];
                 ?>
-        <tr>
+        <tr style="font-size:1.8rem">
             <td><?php echo $b['date']; ?></td>
             <td><?php echo $b['starttime'] . " - " . $b['endtime']; ?></td>
             <td><?php echo $roomName['roomname']; ?></td>
             <td><?php echo $courseName['coursename']; ?></td>
             <td><?php echo $user; ?></td>
-            <td>
-                <?php if ($b['status'] == 1) {
-                            echo "<h6 style='color:darkgreen'>" . "Confirmed." . "</h6>";
-                        } else {
-                            echo "<h6 style='color:#ff1627'>" . "Cancelled." . "</h6>"; ?>
-            </td>
+
+            <?php if ($b['status'] == 1) {
+                        echo "<td style='color:darkgreen;text-transform:uppercase'>" . "Confirmed." . "</td>";
+                    } else {
+                        echo "<td style='color:#ff1627;text-transform:uppercase'>" . "Cancelled." . "</td>"; ?>
+
             <td><?php } ?></td>
         </tr>
 

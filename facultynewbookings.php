@@ -106,7 +106,7 @@
                                 <?php
                                 $course = getCourses();
                                 foreach ($course as $c) { ?>
-                                <option value="<?php echo $c['id']; ?>"><?php echo $c['coursename']; ?></option>
+                                    <option value="<?php echo $c['id']; ?>"><?php echo $c['coursename']; ?></option>
                                 <?php } ?>
                             </select>
                             <span class="stopp" id="courseSpan"></span>

@@ -76,8 +76,7 @@
                         New Location
                         <br><br>
                     </span>
-                    <form class="login100-form validate-form p-b-33 p-t-5" action="controller/addLoc.php"
-                        onsubmit="return validateFormDept()" method="post">
+                    <form class="login100-form validate-form p-b-33 p-t-5" action="controller/addLoc.php" method="post">
 
                         <div>
                             <input id="dept" class="input100" type="text" name="loc" placeholder="Location">
@@ -95,23 +94,28 @@
                 </div>
                 <div style="overflow: scroll;margin:0;height:60rem" class="row login102-form">
                     <h1 style=" color: #fad02c;padding:1rem">All Locations</h1>
-                    <table class="login100-form validate-form p-b-33 p-t-5">
-                        <tr>
-                            <th>Location</th>
-                            <th>Delete</th>
-                        </tr>
-                        <?php
-                        $deptList = getAllLocations();
-                        foreach ($deptList as $b) {
+                    <form action="controller/deleteLoc.php" method="post">
 
+                        <table class="login100-form validate-form p-b-33 p-t-5">
+                            <tr>
+                                <th>Location</th>
+                                <th>Delete</th>
+                            </tr>
+                            <?php
+                            $deptList = getAllLocations();
+                            foreach ($deptList as $b) {
+
+                                ?>
+                            <tr>
+                                <td><?php echo $b['name']; ?></td>
+                                <td><button type="submit" name="id" value="<?php echo $b['id'] ?>"><img
+                                            src="./images/delete.png" style="width:24px;cursor:pointer" /></button>
+                                </td>
+                            </tr>
+                            <?php }
                             ?>
-                        <tr>
-                            <td><?php echo $b['name']; ?></td>
-                            <td><img src="./images/delete.png" style="width:24px;cursor:pointer" /></td>
-                        </tr>
-                        <?php }
-                        ?>
-                    </table>
+                        </table>
+                    </form>
                 </div>
             </div>
         </div>

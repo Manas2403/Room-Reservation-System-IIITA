@@ -14,9 +14,9 @@
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <?php
-include("controller/fetchList.php");
-session_start();
-?>
+    include("controller/fetchList.php");
+    session_start();
+    ?>
 </head>
 
 <body id="top">
@@ -57,7 +57,14 @@ session_start();
                         <li><a href="addLocation.php">Location</a></li>
                     </ul>
                 </li>
-                <li><a href="controller/logout.php" title="">Log Out</a></li>
+                <li class="has-children" style="vertical-align:middle">
+                    <a href="#0" title="" style="text-decoration:none"><img src="./images/person-circle.svg"
+                            width="32" /></a>
+                    <ul class="sub-menu">
+                        <li><a href="profile.php" style="text-decoration:none">Profile</a></li>
+                        <li><a href="controller/logout.php" style="text-decoration:none">Logout</a></li>
+                    </ul>
+                </li>
             </ul>
 
             <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
@@ -86,7 +93,7 @@ session_start();
                     $status = $b['status'];
                     if ($b['date'] == $day && $status == 1) {
                         $roomName = getClassRoomNum($b['classid']);
-                        echo "Room No:" . $roomName['roomname'] . " Time: " . $b['starttime'] . "-" . $b['endtime'] . "<br>";
+                        echo "<div style='display:flex;gap:1rem;font-size:1.8rem;'>" . "<div>" . "<span style='color:#fad02c;font-weight:bold'>Room No:</span> " . $roomName['roomname'] . "</div>" . "<div>" . "<span style='color:#fad02c;font-weight:bold'>Time:</span> " . $b['starttime'] . "-" . $b['endtime'] . "</div>" . "</div>" . "<br>";
                     }
                 }
 
@@ -109,7 +116,7 @@ session_start();
                     $status = $b['status'];
                     if ($b['date'] > $day && $status == 1) {
                         $roomName = getClassRoomNum($b['classid']);
-                        echo "Room No:" . $roomName['roomname'] . " Time: " . $b['starttime'] . "-" . $b['endtime'] . " on " . $b['date'] . "<br>";
+                        echo "<div style='display:flex;gap:1rem;font-size:1.8rem;'>" . "<div>" . "<span style='color:#fad02c;font-weight:bold'>Room No:</span> " . $roomName['roomname'] . "</div>" . "<div>" . "<span style='color:#fad02c;font-weight:bold'>Time:</span> " . $b['starttime'] . "-" . $b['endtime'] . "</div>" . "</div>" . "<br>";
                     }
                 }
 

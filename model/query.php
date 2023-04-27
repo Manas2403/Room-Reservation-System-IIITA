@@ -326,7 +326,7 @@ function deleteCourse($id)
         return true;
     return false;
 }
-function deleteDept($id)
+function deleteDepartment($id)
 {
     $sql = "DELETE from department where id='$id'";
     $result = execute($sql);
