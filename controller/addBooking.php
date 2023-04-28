@@ -1,6 +1,7 @@
 <?php
 require_once("../model/connect.php");
 require_once("../model/query.php");
+require_once("./Email.php");
 function debug_to_console($data)
 {
     $output = $data;
@@ -29,9 +30,13 @@ $room = $_POST['room'];
 $course = $_POST['course'];
 $desc = $_POST['description'];
 $res1 = getRoomByName($room);
+$location = getLocationById($loc)['name'];
 $roomId = $res1['id'];
 debug_to_console($id);
 if (newBooking($id, $loc, $date, $startTime, $endTime, $roomId, $course, $desc)) {
+    $subject = "New Booking";
+    $body = "Hello " . $id . "<br>" . "Your booking has been confirmed for " . $date . " from " . $startTime . " to " . $endTime . " in " . $room . ", " . "$location" . ".";
+    sendEmail("iit2021146@iiita.ac.in", $subject, $body);
     debug_to_console("Hello");
     header('Location: ../facultynewbookings.php');
 }
