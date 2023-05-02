@@ -20,7 +20,11 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <?php include("controller/fetchList.php");
-    session_start(); ?>
+    session_start();
+    if ($_SESSION['userType'] == 2 || $_SESSION['userType'] == 3) {
+        header('Location: bookinglog.php');
+    }
+    ?>
 </head>
 
 <body id="top" style="background-color:#f5f4f7">
@@ -41,16 +45,40 @@
             <h2 class="header__nav-heading h6">Navigate to</h2>
 
             <ul class="header__nav">
-                <li><a href="facultyhome.php" title="" style="text-decoration:none">Home</a></li>
-                <li class="has-children">
-                    <a href="#0" title="" style="text-decoration:none">Bookings</a>
+                <?php
+                if ($_SESSION['userType'] != 3) {
+                    echo "<li><a href='adminhome.php'  style='text-decoration:none'>Home</a></li>
+                <li class='has-children current'>
+                    <a href='#0' style='text-decoration:none'>Booking</a>
+                    <ul class='sub-menu'>
+                        <li><a href='facultynewbookings.php' style='text-decoration:none'>New Booking</a></li>
+                        <li><a href='adminCancelBookings.php' style='text-decoration:none'>Cancel Booking</a></li>
+                    </ul>
+                </li>";
+                } ?>
+                <li><a href="bookinglog.php" title="" style="text-decoration:none">Booking Log</a></li>
+                <li><a href="calendar.php" title="" style="text-decoration:none">Calendar</a></li>
+                <?php
+                if ($_SESSION['userType'] == 1) {
+                    echo "<li class='has-children'>
+                    <a href='#0' title=''style='text-decoration:none'>Adding</a>
+                    <ul class='sub-menu'>
+                        <li><a href='addDepartment.php'style='text-decoration:none'>Department</a></li>
+                    <li><a href='addCourse.php'style='text-decoration:none'>Course</a></li>
+                        <li><a href='addRoom.php'style='text-decoration:none'>Room</a></li>
+                        <li><a href='addLocation.php'style='text-decoration:none'>Location</a></li>
+                    </ul>
+                </li>";
+                }
+                ?>
+                <li class="has-children" style="vertical-align:middle">
+                    <a href="#0" title="" style="text-decoration:none"><img src="./images/person-circle.svg"
+                            width="32" /></a>
                     <ul class="sub-menu">
-                        <li><a href="facultynewbookings.php" style="text-decoration:none">New Booking</a></li>
-                        <li><a href="facultyCancelBookings.php" style="text-decoration:none">Cancel Booking</a></li>
+                        <li><a href="profile.php" style="text-decoration:none">Profile</a></li>
+                        <li><a href="controller/logout.php" style="text-decoration:none">Logout</a></li>
                     </ul>
                 </li>
-                <li><a href="bookinglog.php" title="" style="text-decoration:none">Booking Log</a></li>
-                <li><a href="controller/logout.php" title="" style="text-decoration:none">Log Out</a></li>
             </ul>
 
             <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
@@ -82,22 +110,22 @@
                     if ($b['date'] >= $day && $b['status'] == 1) {
                         $roomName = getClassRoomNum($b['classid']);
                         $courseName = getNameCourse($b['courseid']); ?>
-                <tr style="margin:3rem">
-                    <td><?php echo $b['date']; ?></td>
-                    <td><?php echo $b['starttime'] . "-" . $b['endtime']; ?></td>
-                    <td><?php echo $courseName['coursename']; ?></td>
-                    <td><?php echo $roomName['roomname']; ?></td>
-                    <td></td>
-                    <td>
-                        <form action="controller/cancelBookingDetails.php" method="POST">
-                            <button class="login100-form-btn" type="submit" value="<?php echo $b['id']; ?>"
-                                name="bookId" style="min-width:80px;height:40px">
-                                CANCEL
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                <?php }
+                        <tr style="margin:3rem">
+                            <td><?php echo $b['date']; ?></td>
+                            <td><?php echo $b['starttime'] . "-" . $b['endtime']; ?></td>
+                            <td><?php echo $courseName['coursename']; ?></td>
+                            <td><?php echo $roomName['roomname']; ?></td>
+                            <td></td>
+                            <td>
+                                <form action="controller/cancelBookingDetails.php" method="POST">
+                                    <button class="login100-form-btn" type="submit" value="<?php echo $b['id']; ?>"
+                                        name="bookId" style="min-width:80px;height:40px">
+                                        CANCEL
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php }
                 } ?>
 
             </table>

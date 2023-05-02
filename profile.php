@@ -21,7 +21,7 @@
     <?php
     session_start();
     if (!isset($_SESSION['username'])) {
-        header("location:index.html");
+        header("location:index.php");
     }
 
     ?>
@@ -41,25 +41,51 @@
             <h2 class="header__nav-heading h6">Navigate to</h2>
 
             <ul class="header__nav">
-                <li class="current"><a href="adminhome.php" title="">Home</a></li>
-                <li class="has-children">
-                    <a href="#0" title="">Booking</a>
+                <?php
+                if ($_SESSION['userType'] != 3) {
+                    if ($_SESSION['userType'] == 2) {
+                        echo "<li><a href='facultyhome.php'  style='text-decoration:none'>Home</a></li>
+                <li class='has-children'>
+                    <a href='#0' style='text-decoration:none'>Booking</a>
+                    <ul class='sub-menu'>
+                        <li><a href='facultynewbookings.php' style='text-decoration:none'>New Booking</a></li>
+                        <li><a href='facultyCancelBookings.php' style='text-decoration:none'>Cancel Booking</a></li>
+                    </ul>
+                </li>";
+                    } else {
+                        echo "<li><a href='adminhome.php'  style='text-decoration:none'>Home</a></li>
+                        <li class='has-children'>
+                            <a href='#0' style='text-decoration:none'>Booking</a>
+                            <ul class='sub-menu'>
+                                <li><a href='facultynewbookings.php' style='text-decoration:none'>New Booking</a></li>
+                                <li><a href='adminCancelBookings.php' style='text-decoration:none'>Cancel Booking</a></li>
+                            </ul>
+                        </li>";
+                    }
+                } ?>
+                <li><a href="bookinglog.php" title="" style="text-decoration:none">Booking Log</a></li>
+                <li><a href="calendar.php" title="" style="text-decoration:none">Calendar</a></li>
+                <?php
+                if ($_SESSION['userType'] == 1) {
+                    echo "<li class='has-children'>
+                    <a href='#0' title=''style='text-decoration:none'>Adding</a>
+                    <ul class='sub-menu'>
+                        <li><a href='addDepartment.php'style='text-decoration:none'>Department</a></li>
+                    <li><a href='addCourse.php'style='text-decoration:none'>Course</a></li>
+                        <li><a href='addRoom.php'style='text-decoration:none'>Room</a></li>
+                        <li><a href='addLocation.php'style='text-decoration:none'>Location</a></li>
+                    </ul>
+                </li>";
+                }
+                ?>
+                <li class="has-children" style="vertical-align:middle">
+                    <a href="#0" title="" style="text-decoration:none"><img src="./images/person-circle.svg"
+                            width="32" /></a>
                     <ul class="sub-menu">
-                        <li><a href="adminnewbookings.php">Create Booking</a></li>
-                        <li><a href="adminCancelBookings.php">View Booking</a></li>
+                        <li><a href="profile.php" style="text-decoration:none">Profile</a></li>
+                        <li><a href="controller/logout.php" style="text-decoration:none">Logout</a></li>
                     </ul>
                 </li>
-                <li><a href="adminbookinglog.php" title="">Booking Log</a></li>
-                <li class="has-children">
-                    <a href="#0" title="">Adding</a>
-                    <ul class="sub-menu">
-                        <li><a href="departmentAdding.php"">Department</a></li>
-                    <li><a href=" courseAdding.php">Course</a></li>
-                        <li><a href="roomAdding.php">Room</a></li>
-                    </ul>
-                </li>
-                <li><a href="profile.php" title="">Profile</a></li>
-                <li><a href="controller/logout.php" title="">Log Out</a></li>
             </ul>
 
             <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
@@ -83,7 +109,7 @@
                 echo "<div>" . "Username:    " . $user['username'] . "</div>" . "<br>";
                 ?>
                 <?php
-                echo "<div>" . "Role:    " . ($_SESSION['userType'] == 2 ? "Faculty" : "Admin") . "</div>" . "<br>";
+                echo "<div>" . "Role:    " . (($_SESSION['userType'] == 2 ? "Faculty" : $_SESSION['userType'] == 3) ? "User" : "Admin") . "</div>" . "<br>";
                 ?>
             </p>
 

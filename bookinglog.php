@@ -43,15 +43,30 @@
             <h2 class="header__nav-heading h6">Navigate to</h2>
 
             <ul class="header__nav">
-                <li><a href="facultyhome.php" title="" style="text-decoration:none">Home</a></li>
-                <li class="has-children">
-                    <a href="#0" title="" style="text-decoration:none">Booking</a>
-                    <ul class="sub-menu">
-                        <li><a href="facultynewbookings.php" style="text-decoration:none">New Booking</a></li>
-                        <li><a href="facultyCancelBookings.php" style="text-decoration:none">Cancel Booking</a></li>
+                <?php
+                if ($_SESSION['userType'] != 3) {
+                    if ($_SESSION['userType'] == 2) {
+                        echo "<li><a href='facultyhome.php'  style='text-decoration:none'>Home</a></li>
+                <li class='has-children'>
+                    <a href='#0' style='text-decoration:none'>Booking</a>
+                    <ul class='sub-menu'>
+                        <li><a href='facultynewbookings.php' style='text-decoration:none'>New Booking</a></li>
+                        <li><a href='facultyCancelBookings.php' style='text-decoration:none'>Cancel Booking</a></li>
                     </ul>
-                </li>
+                </li>";
+                    } else {
+                        echo "<li><a href='adminhome.php'  style='text-decoration:none'>Home</a></li>
+                        <li class='has-children'>
+                            <a href='#0' style='text-decoration:none'>Booking</a>
+                            <ul class='sub-menu'>
+                                <li><a href='facultynewbookings.php' style='text-decoration:none'>New Booking</a></li>
+                                <li><a href='adminCancelBookings.php' style='text-decoration:none'>Cancel Booking</a></li>
+                            </ul>
+                        </li>";
+                    }
+                } ?>
                 <li class="current"><a href="bookinglog.php" title="" style="text-decoration:none">Booking Log</a></li>
+                <li><a href="calendar.php" title="" style="text-decoration:none">Calendar</a></li>
                 <?php
                 if ($_SESSION['userType'] == 1) {
                     echo "<li class='has-children'>

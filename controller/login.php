@@ -31,7 +31,7 @@ function login($email, $password)
             if ($dn['businesscategory'][1] == 'faculty') {
                 $userType = 2;
             } else {
-                $userType = 1;
+                $userType = 3;
             }
             $res = addUser($uid, $fullname, $mail, $userType);
             $_SESSION['username'] = $uid;

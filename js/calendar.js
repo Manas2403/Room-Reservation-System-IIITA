@@ -42,21 +42,14 @@ function sendHttpReq() {
                 let bookings = JSON.parse(xhr.responseText);
                 if (bookings.length > 0) {
                     bookings.map((e) => {
+                        console.log(e);
                         events.push({
                             title: e.description + " by " + e.userid,
-                            start: moment(
-                                e.date + e.starttime,
-                                "YYYY.MM.DD H:mm:ss"
-                            )
-                                .tz("Asia/Kolkata")
-
+                            start: moment
+                                .utc(e.date + e.starttime, "YYYY.MM.DD H:mm:ss")
                                 .toISOString(),
-                            end: moment(
-                                e.date + e.endtime,
-                                "YYYY.MM.DD H:mm:ss"
-                            )
-                                .tz("Asia/Kolkata")
-
+                            end: moment
+                                .utc(e.date + e.endtime, "YYYY.MM.DD H:mm:ss")
                                 .toISOString(),
                         });
                     });

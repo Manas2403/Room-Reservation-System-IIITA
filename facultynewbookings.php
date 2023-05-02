@@ -17,6 +17,9 @@
     <?php
     include('model/query.php');
     session_start();
+    if ($_SESSION['userType'] == 3) {
+        header('Location: bookinglog.php');
+    }
     ?>
 </head>
 
@@ -37,16 +40,51 @@
             <h2 class="header__nav-heading h6">Navigate to</h2>
 
             <ul class="header__nav">
-                <li><a href="facultyhome.php" title="">Home</a></li>
-                <li class="has-children">
-                    <a href="#0" title="" style="text-decoration:none">Bookings</a>
+                <?php
+                if ($_SESSION['userType'] != 3) {
+                    if ($_SESSION['userType'] == 2) {
+                        echo "<li><a href='facultyhome.php'  style='text-decoration:none'>Home</a></li>
+                <li class='has-children'>
+                    <a href='#0' style='text-decoration:none'>Booking</a>
+                    <ul class='sub-menu'>
+                        <li><a href='facultynewbookings.php' style='text-decoration:none'>New Booking</a></li>
+                        <li><a href='facultyCancelBookings.php' style='text-decoration:none'>Cancel Booking</a></li>
+                    </ul>
+                </li>";
+                    } else {
+                        echo "<li><a href='adminhome.php'  style='text-decoration:none'>Home</a></li>
+                        <li class='has-children'>
+                            <a href='#0' style='text-decoration:none'>Booking</a>
+                            <ul class='sub-menu'>
+                                <li><a href='facultynewbookings.php' style='text-decoration:none'>New Booking</a></li>
+                                <li><a href='adminCancelBookings.php' style='text-decoration:none'>Cancel Booking</a></li>
+                            </ul>
+                        </li>";
+                    }
+                } ?>
+                <li><a href="bookinglog.php" title="" style="text-decoration:none">Booking Log</a></li>
+                <li><a href="calendar.php" title="" style="text-decoration:none">Calendar</a></li>
+                <?php
+                if ($_SESSION['userType'] == 1) {
+                    echo "<li class='has-children'>
+                    <a href='#0' title=''style='text-decoration:none'>Adding</a>
+                    <ul class='sub-menu'>
+                        <li><a href='addDepartment.php'style='text-decoration:none'>Department</a></li>
+                    <li><a href='addCourse.php'style='text-decoration:none'>Course</a></li>
+                        <li><a href='addRoom.php'style='text-decoration:none'>Room</a></li>
+                        <li><a href='addLocation.php'style='text-decoration:none'>Location</a></li>
+                    </ul>
+                </li>";
+                }
+                ?>
+                <li class="has-children" style="vertical-align:middle">
+                    <a href="#0" title="" style="text-decoration:none"><img src="./images/person-circle.svg"
+                            width="32" /></a>
                     <ul class="sub-menu">
-                        <li><a href="facultynewbookings.php" style="text-decoration:none">New Booking</a></li>
-                        <li><a href="facultyCancelBookings.php" style="text-decoration:none">Cancel Booking</a></li>
+                        <li><a href="profile.php" style="text-decoration:none">Profile</a></li>
+                        <li><a href="controller/logout.php" style="text-decoration:none">Logout</a></li>
                     </ul>
                 </li>
-                <li><a href="bookinglog.php" title="">Booking Log</a></li>
-                <li><a href="controller/logout.php" title="">Log Out</a></li>
             </ul>
 
             <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
@@ -106,7 +144,7 @@
                                 <?php
                                 $course = getCourses();
                                 foreach ($course as $c) { ?>
-                                    <option value="<?php echo $c['id']; ?>"><?php echo $c['coursename']; ?></option>
+                                <option value="<?php echo $c['id']; ?>"><?php echo $c['coursename']; ?></option>
                                 <?php } ?>
                             </select>
                             <span class="stopp" id="courseSpan"></span>
