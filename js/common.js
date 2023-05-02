@@ -54,6 +54,10 @@ date.addEventListener("change", () => {
     selectedRoom.style.display = "block";
     selectedCourse.style.display = "block";
     description.style.display = "block";
+    $("#room").select2({
+        placeholder: "Select Rooms",
+        allowClear: true,
+    });
     var params = [
         "isAvailable",
         loc.value,

@@ -10,6 +10,7 @@
     <script src="_js/modernizr.js"></script>
     <link rel="icon" type="image/png" href="images/iiita.png" />
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css" />
+
     <?php
     include("controller/fetchList.php");
     session_start();

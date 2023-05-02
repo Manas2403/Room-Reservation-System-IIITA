@@ -13,7 +13,8 @@
     <link rel="icon" type="image/png" href="images/iiita.png" />
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
     <?php
     include('model/query.php');
     session_start();
@@ -134,7 +135,7 @@
                         </div>
                         <p style="font-size: 18px" class="input_heading">Available Rooms</p>
                         <div>
-                            <select id="room" name="room" class="input102">
+                            <select id="room" name="room[]" class="input102" multiple="multiple">
                             </select>
                         </div>
                         <div>
@@ -144,7 +145,7 @@
                                 <?php
                                 $course = getCourses();
                                 foreach ($course as $c) { ?>
-                                <option value="<?php echo $c['id']; ?>"><?php echo $c['coursename']; ?></option>
+                                    <option value="<?php echo $c['id']; ?>"><?php echo $c['coursename']; ?></option>
                                 <?php } ?>
                             </select>
                             <span class="stopp" id="courseSpan"></span>
@@ -168,8 +169,10 @@
     <footer>
     </footer>
     <script src="_js/jquery-3.2.1.min.js"></script>
-    <script src="_js/main.js"></script>
     <script src="js/common.js"></script>
+    <script>
+    </script>
+    <script src="_js/main.js"></script>
 </body>
 
 </html>
