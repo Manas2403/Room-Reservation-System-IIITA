@@ -105,6 +105,20 @@ function getAllBookingDetails()
 
     return $bookList;
 }
+function getAllActiveBookings()
+{
+    $sql = "select * from booking where status='1'";
+
+    $result = execute($sql);
+
+    $bookList = array();
+
+    for ($i = 0; $row = mysqli_fetch_assoc($result); ++$i) {
+        $bookList[$i] = $row;
+    }
+
+    return $bookList;
+}
 function getCourseName($courseId)
 {
 

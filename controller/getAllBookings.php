@@ -12,7 +12,7 @@ function debug_to_console($data)
 session_start();
 function AvailableRooms()
 {
-    $bookingList = getAllBookingDetails();
+    $bookingList = getAllActiveBookings();
     print_r(json_encode($bookingList));
 }
 AvailableRooms();
