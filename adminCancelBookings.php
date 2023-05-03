@@ -110,27 +110,28 @@
                     if ($b['date'] >= $day && $b['status'] == 1) {
                         $roomName = getClassRoomNum($b['classid']);
                         $courseName = getNameCourse($b['courseid']); ?>
-                        <tr style="margin:3rem">
-                            <td><?php echo $b['date']; ?></td>
-                            <td><?php echo $b['starttime'] . "-" . $b['endtime']; ?></td>
-                            <td><?php echo $courseName['coursename']; ?></td>
-                            <td><?php echo $roomName['roomname']; ?></td>
-                            <td></td>
-                            <td>
-                                <form action="controller/cancelBookingDetails.php" method="POST">
-                                    <button class="login100-form-btn" type="submit" value="<?php echo $b['id']; ?>"
-                                        name="bookId" style="min-width:80px;height:40px">
-                                        CANCEL
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php }
+                <tr style="margin:3rem">
+                    <td><?php echo $b['date']; ?></td>
+                    <td><?php echo $b['starttime'] . "-" . $b['endtime']; ?></td>
+                    <td><?php echo $courseName['coursename']; ?></td>
+                    <td><?php echo $roomName['roomname']; ?></td>
+                    <td></td>
+                    <td>
+                        <form action="controller/cancelBookingDetails.php" method="POST">
+                            <button class="login100-form-btn" type="submit" value="<?php echo $b['id']; ?>"
+                                name="bookId" style="min-width:80px;height:40px">
+                                CANCEL
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <?php }
                 } ?>
 
             </table>
         </div>
     </section>
+
     <script src="_js/jquery-3.2.1.min.js"></script>
     <script src="_js/main.js"></script>
 

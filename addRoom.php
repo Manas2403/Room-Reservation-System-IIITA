@@ -102,7 +102,7 @@
                             <?php
                             $locationList = getAllLocations();
                             foreach ($locationList as $l) { ?>
-                                <option value="<?php echo $l['name'] ?>"><?php echo $l['name'] ?></option>
+                            <option value="<?php echo $l['name'] ?>"><?php echo $l['name'] ?></option>
                             <?php } ?>
                         </select>
                         <span class="stopp" id="locationSpan"></span>
@@ -135,13 +135,13 @@
                                 $locationName = getLocationById($b['locationid'])
 
                                     ?>
-                                <tr>
-                                    <td><?php echo $b['roomname']; ?></td>
-                                    <td><?php echo $locationName['name']; ?></td>
-                                    <td><button type="submit" name="id" value="<?php echo $b['id'] ?>"><img
-                                                src="./images/delete.png" style="width:24px;cursor:pointer" /></button>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td><?php echo $b['roomname']; ?></td>
+                                <td><?php echo $locationName['name']; ?></td>
+                                <td><button type="submit" name="id" value="<?php echo $b['id'] ?>"><img
+                                            src="./images/delete.png" style="width:24px;cursor:pointer" /></button>
+                                </td>
+                            </tr>
                             <?php }
                             ?>
                         </table>
@@ -150,6 +150,7 @@
             </div>
         </div>
     </section>
+
     <script src="_js/jquery-3.2.1.min.js"></script>
     <script src="_js/main.js"></script>
 </body>

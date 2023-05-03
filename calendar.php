@@ -1352,6 +1352,7 @@
     </header>
 
     <div id="calendar"></div>
+
     <script src="_js/jquery-3.2.1.min.js"></script>
     <script src="_js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js"></script>

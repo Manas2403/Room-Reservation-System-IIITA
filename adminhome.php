@@ -124,7 +124,7 @@
                     $status = $b['status'];
                     if ($b['date'] > $day && $status == 1) {
                         $roomName = getClassRoomNum($b['classid']);
-                        echo "<div style='display:flex;gap:1rem;font-size:1.8rem;'>" . "<div>" . "<span style='color:#fad02c;font-weight:bold'>Room No:</span> " . $roomName['roomname'] . "</div>" . "<div>" . "<span style='color:#fad02c;font-weight:bold'>Time:</span> " . $b['starttime'] . "-" . $b['endtime'] . "</div>" . "</div>" . "<br>";
+                        echo "<div style='display:flex;gap:1rem;font-size:1.8rem;'>" . "<div>" . "<span style='color:#fad02c;font-weight:bold'>Room No:</span> " . $roomName['roomname'] . "</div>" . "<div>" . "<span style='color:#fad02c;font-weight:bold'>Time:</span> " . $b['starttime'] . "-" . $b['endtime'] . "</div>" . "<div>" . "<span style='color:#fad02c;font-weight:bold'>Date:</span> " . $b['date'] . "</div>" . "</div>" . "<br>";
                     }
                 }
 
@@ -134,8 +134,6 @@
 
         </div>
     </section>
-    <footer>
-    </footer>
 
     <script src="_js/jquery-3.2.1.min.js"></script>
     <script src="_js/main.js"></script>

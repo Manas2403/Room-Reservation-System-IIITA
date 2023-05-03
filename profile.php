@@ -140,9 +140,10 @@
   justify-content: center;
   align-items: center;
   gap: 0.2rem;">
-        <div>&copy;2023 Group 6 All rights reserved.</div< /footer>
-            <script src="_js/jquery-3.2.1.min.js"></script>
-            <script src="_js/main.js"></script>
+        <div>&copy;2023 Group 6 All rights reserved.</div>
+    </footer>
+    <script src="_js/jquery-3.2.1.min.js"></script>
+    <script src="_js/main.js"></script>
 </body>
 
 </html>

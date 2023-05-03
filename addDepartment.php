@@ -120,13 +120,13 @@
                             foreach ($deptList as $b) {
                                 if ($b['deptname'] != "admin") {
                                     ?>
-                                            <tr>
-                                                <td><?php echo $b['deptname']; ?></td>
-                                                <td><button type="submit" name="id" value="<?php echo $b['id'] ?>"><img
-                                                            src="./images/delete.png" style="width:24px;cursor:pointer" /></button>
-                                                </td>
-                                            </tr>
-                                    <?php }
+                            <tr>
+                                <td><?php echo $b['deptname']; ?></td>
+                                <td><button type="submit" name="id" value="<?php echo $b['id'] ?>"><img
+                                            src="./images/delete.png" style="width:24px;cursor:pointer" /></button>
+                                </td>
+                            </tr>
+                            <?php }
                             } ?>
                         </table>
                     </form>
@@ -134,6 +134,7 @@
             </div>
         </div>
     </section>
+
     <script src="_js/jquery-3.2.1.min.js"></script>
     <script src="_js/main.js"></script>
 </body>

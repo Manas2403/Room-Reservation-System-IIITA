@@ -123,39 +123,39 @@
             echo "<div class=\"table-responsive booking-log\">";
             echo "<table class=\"table align-middle\">";
             ?>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Room</th>
-                    <th>Course Name</th>
-                    <th>Booked By</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <?php
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Room</th>
+                <th>Course Name</th>
+                <th>Booked By</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <?php
             $bookList = getAllBookingDetailsPagination($offset, $no_of_records_per_page);
             foreach ($bookList as $b) {
                 $roomName = getClassRoomNum($b['classid']);
                 $courseName = getNameCourse($b['courseid']);
                 $user = $b['userid'];
                 ?>
-                <tr style="font-size:1.8rem">
-                    <td><?php echo $b['date']; ?></td>
-                    <td><?php echo $b['starttime'] . " - " . $b['endtime']; ?></td>
-                    <td><?php echo $roomName['roomname']; ?></td>
-                    <td><?php echo $courseName['coursename']; ?></td>
-                    <td><?php echo $user; ?></td>
+        <tr style="font-size:1.8rem">
+            <td><?php echo $b['date']; ?></td>
+            <td><?php echo $b['starttime'] . " - " . $b['endtime']; ?></td>
+            <td><?php echo $roomName['roomname']; ?></td>
+            <td><?php echo $courseName['coursename']; ?></td>
+            <td><?php echo $user; ?></td>
 
-                    <?php if ($b['status'] == 1) {
+            <?php if ($b['status'] == 1) {
                         echo "<td style='color:darkgreen;text-transform:uppercase'>" . "Confirmed." . "</td>";
                     } else {
                         echo "<td style='color:#ff1627;text-transform:uppercase'>" . "Cancelled." . "</td>"; ?>
 
-                        <td><?php } ?></td>
-                </tr>
+            <td><?php } ?></td>
+        </tr>
 
-                <?php
+        <?php
             }
 
             echo "</table>";
@@ -182,8 +182,7 @@
               } ?>">Next</a></button>
         </div>
     </section>
-    <footer>
-    </footer>
+
     <script src="_js/jquery-3.2.1.min.js"></script>
     <script src="_js/main.js"></script>
 

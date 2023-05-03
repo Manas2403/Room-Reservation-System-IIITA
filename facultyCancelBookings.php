@@ -21,7 +21,7 @@
     </script> -->
     <?php
     include('model/query.php');
-    session_start(); 
+    session_start();
     if ($_SESSION['userType'] == 1 || $_SESSION['userType'] == 3) {
         header('Location: bookinglog.php');
     } ?>
@@ -130,6 +130,7 @@
             </table>
         </div>
     </section>
+
     <script src="_js/jquery-3.2.1.min.js"></script>
     <script src="_js/main.js"></script>
 

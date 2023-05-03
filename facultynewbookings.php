@@ -164,10 +164,7 @@
                 </div>
             </div>
         </div>
-
     </section>
-    <footer>
-    </footer>
     <script src="_js/jquery-3.2.1.min.js"></script>
     <script src="js/common.js"></script>
     <script>

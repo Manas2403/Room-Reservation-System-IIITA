@@ -103,7 +103,7 @@
                             <?php
                             $locationList = getAllDepartments();
                             foreach ($locationList as $l) { ?>
-                                <option value="<?php echo $l['deptname'] ?>"><?php echo $l['deptname'] ?></option>
+                            <option value="<?php echo $l['deptname'] ?>"><?php echo $l['deptname'] ?></option>
                             <?php } ?>
                         </select>
                         <span class="stopp" id="locationSpan"></span>
@@ -137,13 +137,13 @@
                                 $deptName = getDepartmentById($b['deptid'])
 
                                     ?>
-                                <tr>
-                                    <td><?php echo $b['coursename']; ?></td>
-                                    <td><?php echo $deptName['deptname']; ?></td>
-                                    <td><button type="submit" name="id" value="<?php echo $b['id'] ?>"><img
-                                                src="./images/delete.png" style="width:24px;cursor:pointer" /></button>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td><?php echo $b['coursename']; ?></td>
+                                <td><?php echo $deptName['deptname']; ?></td>
+                                <td><button type="submit" name="id" value="<?php echo $b['id'] ?>"><img
+                                            src="./images/delete.png" style="width:24px;cursor:pointer" /></button>
+                                </td>
+                            </tr>
                             <?php }
                             ?>
                         </table>
@@ -152,6 +152,7 @@
             </div>
         </div>
     </section>
+
     <script src="_js/jquery-3.2.1.min.js"></script>
     <script src="_js/main.js"></script>
 </body>
