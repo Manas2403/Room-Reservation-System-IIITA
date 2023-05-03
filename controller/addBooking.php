@@ -41,7 +41,7 @@ foreach ($_POST['room'] as $room) {
 }
 $subject = "New Booking";
 $body = "Hello " . $id . "<br>" . "Your booking has been confirmed for " . $date . " from " . $startTime . " to " . $endTime . " in " . join(", ", $confirmedRoom) . ", " . "$location" . ".";
-sendEmail("iit2021146@iiita.ac.in", $subject, $body);
+sendEmail($id+"iiita.ac.in", $subject, $body);
 debug_to_console("Hello");
 header('Location: ../facultynewbookings.php');
 ?>

@@ -11,10 +11,10 @@ function sendEmail($to, $subject, $message)
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = "iit2021146@iiita.ac.in";
-    $mail->Password = "tzatkghphgaotkbi";
+    $mail->Username = "kapoorraghav944@gmail.com";
+    $mail->Password = "wjcnhyovssbkiffo";
     $mail->Port = 587;
-    $mail->setFrom('iit2021146@iiita.ac.in', 'Manas Gupta');
+    $mail->setFrom('kapoorraghav944@gmail.com', 'Manas Gupta');
     $mail->addAddress($to);
     $mail->Subject = $subject;
     $mail->isHTML(true);
