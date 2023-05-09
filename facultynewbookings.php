@@ -112,7 +112,8 @@
 
 
                         <span class="stopp" id="dateSpan"></span>
-                        <select id="location" name="location" class="input102">
+
+                        <select id="location" name="location" class="input102" required>
                             <option value="location">Location</option>
                             <?php
                             $locations = getAllLocations();
@@ -120,7 +121,7 @@
                                 ?><option value="<?php echo $l['id'] ?>"><?php echo $l['name'] ?></option>
                             <?php } ?>
                         </select>
-                        <input class="input102" type="date" name="selectDate" id="selectDate">
+                        <input class="input102" type="date" name="selectDate" id="selectDate" required>
                         <div style="display:flex;justify-content:space-between;align-items:center">
                             <div class="input104">
                                 <p style="font-size: 18px" class="input_heading">Start Time</p>
@@ -135,24 +136,24 @@
                         </div>
                         <p style="font-size: 18px" class="input_heading">Available Rooms</p>
                         <div>
-                            <select id="room" name="room[]" class="input102" multiple="multiple">
+                            <select id="room" name="room[]" class="input102" multiple="multiple" required>
                             </select>
                         </div>
                         <div>
 
-                            <select id="course" name="course" class="input102">
+                            <select id="course" name="course" class="input102" required>
                                 <option value="course">Course Name</option>
                                 <?php
                                 $course = getCourses();
                                 foreach ($course as $c) { ?>
-                                <option value="<?php echo $c['id']; ?>"><?php echo $c['coursename']; ?></option>
+                                    <option value="<?php echo $c['id']; ?>"><?php echo $c['coursename']; ?></option>
                                 <?php } ?>
                             </select>
                             <span class="stopp" id="courseSpan"></span>
                         </div>
                         <div>
                             <textarea class="input102" style="background-color:#f5f3f3;margin-top:1rem"
-                                name="description" id="description" placeholder="Enter Description"></textarea>
+                                name="description" id="description" placeholder="Enter Description" required></textarea>
                         </div>
                         <div class="container-login100-form-btn m-t-32">
                             <button class="login100-form-btn" type="submit" value="submit" id="submit_btn">

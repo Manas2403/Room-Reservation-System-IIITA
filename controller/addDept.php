@@ -8,6 +8,13 @@ function debug_to_console($data)
         $output = implode(',', $output);
     echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
 }
+function create_alert($data)
+{
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+    echo "<script>alert('" . $output . "' );</script>";
+}
 function addDeptName($dept)
 {
     if ($dept) {

@@ -94,7 +94,8 @@
                         method="post">
 
                         <div>
-                            <input id="dept" class="input100" type="text" name="department" placeholder="Department">
+                            <input id="dept" class="input100" type="text" name="department" placeholder="Department"
+                                required>
                             <span class="stopp" id="deptSpan"></span>
                         </div>
 
@@ -120,13 +121,13 @@
                             foreach ($deptList as $b) {
                                 if ($b['deptname'] != "admin") {
                                     ?>
-                            <tr>
-                                <td><?php echo $b['deptname']; ?></td>
-                                <td><button type="submit" name="id" value="<?php echo $b['id'] ?>"><img
-                                            src="./images/delete.png" style="width:24px;cursor:pointer" /></button>
-                                </td>
-                            </tr>
-                            <?php }
+                                    <tr>
+                                        <td><?php echo $b['deptname']; ?></td>
+                                        <td><button type="submit" name="id" value="<?php echo $b['id'] ?>"><img
+                                                    src="./images/delete.png" style="width:24px;cursor:pointer" /></button>
+                                        </td>
+                                    </tr>
+                                <?php }
                             } ?>
                         </table>
                     </form>

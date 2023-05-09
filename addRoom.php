@@ -97,18 +97,18 @@
                         method="post">
 
                         <p class="input100" style="padding:0">Room Location</p>
-                        <select id="roomlocation" name="roomlocation" class="input102">
+                        <select id="roomlocation" name="roomlocation" class="input102" required>
                             <option value="select">SELECT</option>
                             <?php
                             $locationList = getAllLocations();
                             foreach ($locationList as $l) { ?>
-                            <option value="<?php echo $l['name'] ?>"><?php echo $l['name'] ?></option>
+                                <option value="<?php echo $l['name'] ?>"><?php echo $l['name'] ?></option>
                             <?php } ?>
                         </select>
                         <span class="stopp" id="locationSpan"></span>
                         <br><br>
                         <div>
-                            <input id="room" class="input100" type="text" name="room" placeholder="Room">
+                            <input id="room" class="input100" type="text" name="room" placeholder="Room" required>
                             <span class="stopp" id="roomSpan"></span>
                         </div>
                         <br><br>
@@ -135,13 +135,13 @@
                                 $locationName = getLocationById($b['locationid'])
 
                                     ?>
-                            <tr>
-                                <td><?php echo $b['roomname']; ?></td>
-                                <td><?php echo $locationName['name']; ?></td>
-                                <td><button type="submit" name="id" value="<?php echo $b['id'] ?>"><img
-                                            src="./images/delete.png" style="width:24px;cursor:pointer" /></button>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td><?php echo $b['roomname']; ?></td>
+                                    <td><?php echo $locationName['name']; ?></td>
+                                    <td><button type="submit" name="id" value="<?php echo $b['id'] ?>"><img
+                                                src="./images/delete.png" style="width:24px;cursor:pointer" /></button>
+                                    </td>
+                                </tr>
                             <?php }
                             ?>
                         </table>

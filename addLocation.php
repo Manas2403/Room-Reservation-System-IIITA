@@ -93,7 +93,7 @@
                     <form class="login100-form validate-form p-b-33 p-t-5" action="controller/addLoc.php" method="post">
 
                         <div>
-                            <input id="dept" class="input100" type="text" name="loc" placeholder="Location">
+                            <input id="dept" class="input100" type="text" name="loc" placeholder="Location" required>
                             <span class="stopp" id="deptSpan"></span>
                         </div>
 

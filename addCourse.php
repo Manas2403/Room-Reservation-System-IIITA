@@ -98,7 +98,7 @@
                         method="post">
 
                         <p class="input100" style="padding:0">Department</p>
-                        <select id="dept" name="dept" class="input102">
+                        <select id="dept" name="dept" class="input102" required>
                             <option value="select">SELECT</option>
                             <?php
                             $locationList = getAllDepartments();
@@ -109,7 +109,7 @@
                         <span class="stopp" id="locationSpan"></span>
                         <br><br>
                         <div>
-                            <input id="course" class="input100" type="text" name="course" placeholder="Course">
+                            <input id="course" class="input100" type="text" name="course" placeholder="Course" required>
                             <span class="stopp" id="roomSpan"></span>
                         </div>
                         <br><br>

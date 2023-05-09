@@ -8,6 +8,13 @@ function debug_to_console($data)
         $output = implode(',', $output);
     echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
 }
+function create_alert($data)
+{
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+    echo "<script>alert('" . $output . "' );</script>";
+}
 function login($email, $password)
 {
     if ($email && $password) {
@@ -20,6 +27,8 @@ function login($email, $password)
         $ldapbind = @ldap_bind($ds, $dn["dn"], $password);
         if (!$ldapbind) {
             debug_to_console("Wrong password");
+            create_alert("Wrong password");
+            // header('Location: ../index.php');
             return false;
         }
         ldap_close($ds);
