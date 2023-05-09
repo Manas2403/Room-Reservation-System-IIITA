@@ -56,7 +56,7 @@ CREATE TABLE `booking`(
     `description` TEXT NOT NULL,
     `starttime` TIME NOT NULL,
     `endtime`  TIME NOT NULL,
-    `cancelledby` VARCHAR(30) DEFAULT NULL,
+    `cancelledby` VARCHAR(30) DEFAULT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 -- inserting data into booking table
 -- primary key for location table
