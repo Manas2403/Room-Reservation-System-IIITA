@@ -360,7 +360,7 @@ function getFacultyCanCancelBooking($username)
 }
 function listOfAvailableRooms($locId, $date, $startTime, $endTime)
 {
-    $sql = "SELECT roomname FROM classroom WHERE locationid='$locId' and roomname not in (SELECT roomname from classroom c join booking b on c.id=b.classid and c.locationid='$locId' and ((b.starttime>='$startTime' and b.starttime<'$endTime') or (b.endtime>'$startTime' and b.endtime<='$endTime')) and b.date='$date')";
+    $sql = "SELECT roomname FROM classroom WHERE locationid='$locId' and roomname not in (SELECT roomname from classroom c join booking b on c.id=b.classid and c.locationid='$locId' and ((b.starttime<='$startTime' and '$startTime'<b.endtime) or (b.starttime<'$endTime' and '$endTime'<=b.endtime)) and b.date='$date')";
     $result = execute($sql);
     $roomlist = array();
     for ($i = 0; $row = mysqli_fetch_assoc($result); $i++) {
